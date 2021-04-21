@@ -1,4 +1,4 @@
-FROM jakzal/phpqa:php7.3-alpine
+FROM jakzal/phpqa:php7.4-alpine
 
 RUN apk add --no-cache ldb-dev libldap openldap-dev \
  && docker-php-ext-install ldap
