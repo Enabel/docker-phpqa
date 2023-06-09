@@ -13,11 +13,16 @@ env:
 
 jobs:
     push_to_registry:
+        strategy:
+            matrix:
+                branches: [main, 8.2, 8.1]
         name: Push Docker image to Docker Hub
         runs-on: ubuntu-latest
         steps:
             -   name: Check out the repo
                 uses: actions/checkout@v3
+                with:
+                    ref: ${{ matrix.branches }}
 
             -   name: Set up Docker Buildx
                 uses: docker/setup-buildx-action@v2
