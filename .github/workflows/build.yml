@@ -2,7 +2,7 @@ name: Build
 
 on:
     push:
-        branches: [main]
+        branches: [ '**' ]
     schedule:
         -   cron: '0 0 * * *'
 
@@ -15,7 +15,7 @@ jobs:
     push_to_registry:
         strategy:
             matrix:
-                branches: [main, 8.2, 8.1]
+                branches: [ main, 8.2, 8.1 ]
         name: Push Docker image to Docker Hub
         runs-on: ubuntu-latest
         steps:
@@ -37,7 +37,8 @@ jobs:
                 id: meta
                 uses: docker/metadata-action@v4
                 with:
-                    tags: type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
+                    tags: |
+                        type=raw,value=${{ matrix.branches == 'main' && github.ref == 'refs/heads/main' ? 'latest': matrix.branches }},enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
                     images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
             -   name: Build and push Docker image
