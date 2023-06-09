@@ -12,18 +12,6 @@ env:
     IMAGE_NAME: enabel/phpqa
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - uses: nelonoel/branch-name@v1
-            - name: Build the Docker image (${BRANCH_NAME})
-              run: docker build . --file docker/Dockerfile --tag ${{ env.IMAGE_NAME }}:${{ BRANCH_NAME }}
-              if: ${{ BRANCH_NAME }} != 'main'
-            - name: Build the Docker image (latest)
-              run: docker build . --file docker/Dockerfile --tag ${{ env.IMAGE_NAME }}:latest
-              if: ${{ BRANCH_NAME }} == 'main'
-
     push_to_registry:
         name: Push Docker image to Docker Hub
         runs-on: ubuntu-latest
