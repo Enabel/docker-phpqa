@@ -44,8 +44,7 @@ jobs:
                           } else {
                             matrix.branches
                           }
-                        },
-                        enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
+                        },enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
                     images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
             -   name: Build and push Docker image
