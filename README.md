@@ -4,7 +4,7 @@ Docker image providing static analysis tools for PHP.
 This image is based on this [`jakzal/phpqa` repository](https://github.com/jakzal/phpqa) 
 
 ## Base version
-* jakzal/phpqa:php8.2-alpine
+* jakzal/phpqa:phpXX-alpine
 
 ## Additional extensions:
 * ldap
