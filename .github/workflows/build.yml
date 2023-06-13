@@ -38,7 +38,7 @@ jobs:
                 with:
                     images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-            -   name: Build and push Docker image
+            -   name: Build and push Docker image as latest
                 uses: docker/build-push-action@v4
                 if: ${{ matrix.versions == env.LATEST_VERSION }}
                 with:
