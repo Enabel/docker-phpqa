@@ -16,7 +16,7 @@ jobs:
     push_to_registry:
         strategy:
             matrix:
-                versions: [ '8.0' ]
+                versions: [ '8.2', '8.1', '8.0', '7.4' ]
         name: Push Docker image to Docker Hub
         runs-on: ubuntu-latest
         steps:
